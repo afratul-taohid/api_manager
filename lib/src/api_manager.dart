@@ -88,9 +88,9 @@ class ApiManagerSrc implements ApiManager {
     ProgressCallback onReceiveProgress,
   }) async {
     /// check internet connectivity & return an internet error message
-//    if (!await ConnectivityManager.isConnected()) {
-//      return _internetError<T>();
-//    }
+    if (!await ConnectivityManager.isConnected()) {
+      return _internetError<T>();
+    }
 
     if (options == null) {
       options = Options();
