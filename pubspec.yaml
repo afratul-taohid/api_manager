@@ -1,6 +1,6 @@
 name: api_manager
 description: A simple package for manage api request easily with the help of flutter dio api. 
-version: 0.0.2
+version: 0.1.6
 homepage: https://github.com/afratul-taohid/api_manager
 
 environment:

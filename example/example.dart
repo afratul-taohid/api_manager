@@ -2,11 +2,15 @@ import 'package:api_manager/api_manager.dart';
 
 void main() async {
   ApiManager _apiManager = ApiManager();
-  _apiManager.options.baseUrl = "http://61.247.188.124:8009/api/v1/";
+  _apiManager.options.baseUrl = $base_url;
+  _apiManager.responseBodyWrapper("data");
 
-  ApiResponse<Map<String, dynamic>> response = await _apiManager.request(
+  ApiResponse<List<dynamic>> response = await _apiManager.request(
     requestType: RequestType.GET,
-    route: "front/job-postings",
+    route: $route,
+    responseBodySerializer: (jsonMap) {
+      return jsonMap as List;
+    },
   );
   print(response);
 }

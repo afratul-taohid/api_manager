@@ -1,6 +1,4 @@
-# api_manager
-
-[![pub package](https://img.shields.io/pub/v/photo_manager.svg)](https://pub.dev/packages/api_manager)
+# api_manager [![pub package](https://img.shields.io/pub/v/api_manager?style=social)](https://pub.dev/packages/api_manager)
 
 A simple flutter API to manage rest api request easily with the help of flutter dio. 
 
@@ -10,7 +8,7 @@ A simple flutter API to manage rest api request easily with the help of flutter 
 
 ### Add dependency
 
-the latest version is [![pub package](https://img.shields.io/pub/v/photo_manager.svg)](https://pub.dev/packages/api_manager)
+[![pub package](https://img.shields.io/pub/v/api_manager?style=for-the-badge)](https://pub.dev/packages/api_manager)
 
 ```yaml
 dependencies:

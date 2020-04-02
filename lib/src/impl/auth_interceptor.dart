@@ -1,6 +1,5 @@
+import 'package:api_manager/api_manager.dart';
 import 'package:dio/dio.dart';
-
-import '../api_manager.dart';
 
 /// Created by Taohid on 02, March, 2020
 /// Email: taohid32@gmail.com

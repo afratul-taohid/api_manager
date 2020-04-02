@@ -1,8 +1,7 @@
 import 'package:connectivity/connectivity.dart';
 
 /// Created by Taohid on 01, March, 2020
-/// Email: taohid32@gmail.com
-
+/// Internet connectivity check
 class ConnectivityManager {
   static isConnected() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
