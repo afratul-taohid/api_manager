@@ -1,7 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import 'entry.dart' if (dart.library.io) 'impl/entry.dart';
+import 'entry.dart'
+    if (dart.library.io) 'impl/entry.dart'
+    if (dart.library.html) 'impl/entry.html.dart';
 
 /// Created by Taohid on 01, March, 2020
 /// Email: taohid32@gmail.com
@@ -24,7 +28,10 @@ abstract class ApiManager {
     Function(Object object) logPrint,
   });
 
-  Future<MultipartFile> getMultipartFileData(String filePath);
+  Future<MultipartFile> getMultipartFromFile(String filePath);
+
+  Future<MultipartFile> getMultipartFromBytes(Uint8List bytes,
+      [String fileName]);
 
   Future<ApiResponse<T>> request<T>({
     @required String route,

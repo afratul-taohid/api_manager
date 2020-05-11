@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:api_manager/api_manager.dart';
-import 'package:api_manager/src/connectivity_manager.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -110,11 +109,6 @@ class ApiManagerImpl implements ApiManager {
     ProgressCallback onSendProgress,
     ProgressCallback onReceiveProgress,
   }) async {
-    /// check internet connectivity & return an internet error message
-    if (!await ConnectivityManager.isConnected()) {
-      return _internetError<T>();
-    }
-
     if (options == null) {
       options = Options();
     }
@@ -133,10 +127,7 @@ class ApiManagerImpl implements ApiManager {
             onReceiveProgress: onReceiveProgress,
           );
           return _returnResponse<T>(
-            response,
-            responseBodySerializer,
-            responseBodyWrapper,
-          );
+              response, responseBodySerializer, responseBodyWrapper);
 
         /// http post request method
         case RequestType.POST:
@@ -150,10 +141,7 @@ class ApiManagerImpl implements ApiManager {
             onReceiveProgress: onReceiveProgress,
           );
           return _returnResponse<T>(
-            response,
-            responseBodySerializer,
-            responseBodyWrapper,
-          );
+              response, responseBodySerializer, responseBodyWrapper);
 
         /// http put request method
         case RequestType.PUT:
@@ -167,10 +155,7 @@ class ApiManagerImpl implements ApiManager {
             onReceiveProgress: onReceiveProgress,
           );
           return _returnResponse<T>(
-            response,
-            responseBodySerializer,
-            responseBodyWrapper,
-          );
+              response, responseBodySerializer, responseBodyWrapper);
 
         /// http delete request method
         case RequestType.DELETE:
@@ -182,17 +167,13 @@ class ApiManagerImpl implements ApiManager {
             options: options,
           );
           return _returnResponse<T>(
-            response,
-            responseBodySerializer,
-            responseBodyWrapper,
-          );
+              response, responseBodySerializer, responseBodyWrapper);
 
         /// throw an exception when no http request method is passed
         default:
           throw Exception('No request type passed');
       }
     } on DioError catch (error) {
-      print(error.toString());
       return ApiResponse.error(
         error.response == null ? error.message : error.response.toString(),
       );
@@ -228,16 +209,10 @@ class ApiManagerImpl implements ApiManager {
                           : response.data,
         );
       } catch (e) {
-        print(e);
         return ApiResponse.error("Data Serialization Error: $e");
       }
     } else {
-      print('Dio Error: States Code ${response.statusCode}');
       return ApiResponse.error(response.statusMessage);
     }
-  }
-
-  ApiResponse<T> _internetError<T>() {
-    return ApiResponse.error("Internet not connected");
   }
 }
