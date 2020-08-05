@@ -87,7 +87,6 @@ and actual api response json structure is:
         route: 'api_route',
         requestParams: {"userId": 12}, /// add params if required
         isAuthRequired: true, /// by set it to true, this request add a header authorization from this method enableAuthTokenCheck();
-        responseBodyWrapper: 'data',
         responseBodySerializer: (jsonMap) {
           return SampleResponse.fromJson(jsonMap); /// parse the json response into dart model class
         },
@@ -102,7 +101,6 @@ and actual api response json structure is:
         route: 'api_route',
         requestBody: {"userId": 12}, /// add POST request body
         isAuthRequired: true, /// by set it to true, this request add a header authorization from this method enableAuthTokenCheck();
-        responseBodyWrapper: 'data',
         responseBodySerializer: (jsonMap) {
           return SampleResponse.fromJson(jsonMap); /// parse the json response into dart model class
         },
