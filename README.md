@@ -34,9 +34,9 @@ void main() async {
 ```dart
 
 class ApiRepository {
-  
+  static const BASE_URL = 'https://google.com/api/v1';
   static final ApiRepository _instance = ApiRepository._internal(); /// singleton api repository
-  ApiManager _apiManager;
+  late ApiManager _apiManager; /// if you use Flutter version 1, remove late
 
   factory ApiRepository() {
     return _instance;
@@ -45,7 +45,7 @@ class ApiRepository {
   /// base configuration for api manager
   ApiRepository._internal() {
     _apiManager = ApiManager();
-    _apiManager.options.baseUrl = BASE_URL; /// EX: BASE_URL = https://google.com/api/v1 
+    _apiManager.options.baseUrl = BASE_URL; /// EX: BASE_URL = 'https://google.com/api/v1'
     _apiManager.options.connectTimeout = 100000;
     _apiManager.options.receiveTimeout = 100000;
     _apiManager.responseBodyWrapper('data'); /// This is used to parse the response without data attribute, some use case will shown below
