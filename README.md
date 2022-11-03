@@ -50,7 +50,7 @@ class ApiRepository {
     _apiManager.options.receiveTimeout = 100000;
     _apiManager.responseBodyWrapper('data'); /// This is used to parse the response without data attribute, some use case will shown below
     _apiManager.enableLogging(responseBody: true, requestBody: false); /// enable api logging EX: response, request, headers etc
-    _apiManager.enableAuthTokenCheck(() => "access_token"); /// EX: JWT/PASSPORT auth token store in cache
+    _apiManager.enableAuthTokenCheck(() => Future.value('access_token')); /// EX: JWT/PASSPORT auth token store in cache
   }
 }
 
